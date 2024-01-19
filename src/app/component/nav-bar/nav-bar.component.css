@@ -1,0 +1,30 @@
+.customNavbar{
+    background-color:#2a26e7; /* Peach color */
+    height: 100px;
+    font-size: 22px;
+}
+.navbar-nav{
+    margin-left: 200px;
+}
+.nav-link,.navbar-brand{
+    
+    color: azure;
+    letter-spacing: 2px;
+}
+
+.navbar-brand
+{
+    color: rgb(204, 224, 224);
+    letter-spacing: 2px;
+    font-size: 35px;
+}
+
+.active1{
+    font-weight: bolder;
+}
+
+.navbar-nav .nav-link.show
+{
+    color: azure;
+    font-weight: bolder;
+}

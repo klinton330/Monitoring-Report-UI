@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg customNavbar p-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink=''><span style="color: rgb(18, 218, 68);font-size: 35px;"><b>P</b></span>ointel<span style="color: rgb(18, 218, 68); font-size: 35px;"><b>M</b></span>onitoring</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link mx-2" routerLink="/add" routerLinkActive="active1" [routerLinkActiveOptions]="{exact:true}">Add</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link mx-2 dropdown-toggle"  data-bs-toggle="dropdown" routerLinkActive="active1" [routerLinkActiveOptions]="{exact:true}" >Fetch</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/fetch" routerLinkActive="active1" [routerLinkActiveOptions]="{exact:true}">Fetch By BU</a></li>
+                <li><a class="dropdown-item" routerLink="/fetchbydate" routerLinkActive="active1" [routerLinkActiveOptions]="{exact:true}">Fetch By Date</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+      </div>
+    </div>
+  </nav>
+  

@@ -1,0 +1,142 @@
+<div class="container pt-5 my-5 border h-500">
+    <h2 *ngIf="isIdPresent else showSaveheading">Update</h2>
+    <form #monitordata="ngForm" class="form-style">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- First 10 fields -->
+                <div class="mb-3">
+                    <label for="dateField" class="form-label">Select Date:</label>
+                    <input type="date" class="form-control" id="dateField" name="dateField"
+                        [(ngModel)]="monitor.dateField" #dateField="ngModel" required>
+                    <span class="text-danger" *ngIf="(dateField.touched || monitordata.submitted) && dateField.errors">
+                        Date is required
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="outbound" class="form-label">Outbound:</label>
+                    <input type="text" class="form-control" placeholder="Number of Calls Outbound"
+                        [(ngModel)]="monitor.outbound" name="outbound" #outbound="ngModel" required>
+                    <span class="text-danger" *ngIf="(outbound.touched || monitordata.submitted) && outbound.errors">
+                        Please Enter the Outbound Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="offerred" class="form-label">Offerred:</label>
+                    <input type="text" class="form-control" placeholder="Number of Calls Offerred" id="offerred"
+                        [(ngModel)]="monitor.offerred" name="offerred" #inbound="ngModel" required>
+                    <span class="text-danger" *ngIf="(inbound.touched || monitordata.submitted) && inbound.errors">
+                        Please Enter the Inbound Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="answered" class="form-label">Answered:</label>
+                    <input type="text" class="form-control" placeholder="Number of Calls Answered" id="answered"
+                        [(ngModel)]="monitor.answered" name="answered" #answered="ngModel" required>
+                    <span class="text-danger" *ngIf="(answered.touched || monitordata.submitted) && answered.errors">
+                        Please Enter the Answered Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="answered" class="form-label">Api Execution:</label>
+                    <input type="text" class="form-control" placeholder="Number of API Execution" id="apiExecution"
+                        [(ngModel)]="monitor.apiExecution" name="apiExecution" #apie="ngModel" required>
+                    <span class="text-danger" *ngIf="(apie.touched || monitordata.submitted) && apie.errors">
+                        Please Enter No of API Execution
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="globalException" class="form-label">Global Exception:</label>
+                    <input type="text" class="form-control" placeholder="Number of Global Exception"
+                        id="globalException" [(ngModel)]="monitor.globalException" name="globalException" #ge="ngModel"
+                        required>
+                    <span class="text-danger" *ngIf="(ge.touched || monitordata.submitted) && ge.errors">
+                        Please Enter No of Global Exception Occured
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="callflowDisconnect" class="form-label">Callflow Disconnect:</label>
+                    <input type="text" class="form-control" placeholder="Number of Callflow Disconnect"
+                        id="callflowDisconnect" [(ngModel)]="monitor.callflowDisconnect" name="callflowDisconnect"
+                        #callflowDisconnect="ngModel" required>
+                    <span class="text-danger"
+                        *ngIf="(callflowDisconnect.touched || monitordata.submitted) && callflowDisconnect.errors">
+                        Please Enter No of Callflow Disconnect
+                    </span>
+                </div>
+                <!-- Repeat the structure for fields 2 to 10 -->
+            </div>
+            <div class="col-md-6">
+                <!-- Next 10 fields -->
+
+                <div class="mb-3">
+                    <label for="businessUnit" class="form-label">Business Unit:</label>
+                    <select class="form-select" id="select-dropdown" name="businessUnit"
+                        [(ngModel)]="monitor.businessUnit" #bu="ngModel" required>
+
+                        <option value="" selected>Select Business Unit:</option>
+                        <option value="POJ">POJ</option>
+                        <option value="GIB">GIB</option>
+                        <option value="PGF">PGF</option>
+                    </select>
+                    <span class="text-danger" *ngIf="(bu.touched || monitordata.submitted) && bu.errors">
+                        Please Select Business Unit
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="inbound" class="form-label">Inbound:</label>
+                    <input type="text" class="form-control" placeholder="Number of Inbound" id="inbound" name="inbound"
+                        [(ngModel)]="monitor.inbound" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="abandoned" class="form-label">Abandoned:</label>
+                    <input type="text" class="form-control" id="abandoned" placeholder="Number of Abandoned"
+                        name="abandoned" [(ngModel)]="monitor.abandoned" #abandon="ngModel" required>
+                    <span class="text-danger" *ngIf="(abandon.touched || monitordata.submitted) && abandon.errors">
+                        Please Enter No of Abandon Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="transferred" class="form-label">Transferred:</label>
+                    <input type="text" class="form-control" id="transferred" placeholder="Number of Transferred"
+                        name="transferred" [(ngModel)]="monitor.transferred" #transferred="ngModel" required>
+                    <span class="text-danger"
+                        *ngIf="(transferred.touched || monitordata.submitted) && transferred.errors">
+                        Please Enter No of Transferred Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="sms" class="form-label">SMS:</label>
+                    <input type="text" class="form-control" id="sms" name="sms" placeholder="Number of SMS"
+                        [(ngModel)]="monitor.sms" #sms="ngModel" required>
+                    <span class="text-danger" *ngIf="(sms.touched || monitordata.submitted) && sms.errors">
+                        Please Enter No of SMS Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="customerDisconnect" class="form-label">Customer Disconnect:</label>
+                    <input type="text" class="form-control" id="customerDisconnect"
+                        placeholder="Number of Customer Disconnect" name="customerDisconnect"
+                        [(ngModel)]="monitor.customerDisconnect" #customdisconnect="ngModel" required>
+                    <span class="text-danger"
+                        *ngIf="(customdisconnect.touched || monitordata.submitted) && customdisconnect.errors">
+                        Please Enter No of Customet Disconnect Calls
+                    </span>
+                </div>
+                <!-- Repeat the structure for fields 12 to 20 -->
+            </div>
+        </div>
+
+        <button *ngIf="isIdPresent else showSave" class="btn btn-primary m-2" (click)="updateMonitorData(monitor)"
+            [disabled]="monitordata.invalid">Update</button>
+
+        <ng-template #showSave>
+            <button class="btn btn-primary m-2" (click)="submitData(monitordata)"
+                [disabled]="monitordata.invalid">Save</button>
+        </ng-template>
+        <ng-template #showSaveheading>
+            <h2>Save</h2>
+        </ng-template>
+        <button (click)="onCancelClick()" class="btn btn-secondary">Cancel</button>
+    </form>
+</div>

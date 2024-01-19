@@ -1,0 +1,136 @@
+
+<div class="container-fluid mt-3 col-6"*ngIf="listOfData.length>0">
+      <h2>Date:{{date}}</h2>
+      <button class="btn btn-primary" (click)="generatePDF()">Generate PDF</button>
+      <br><br>
+  <!-- <table class="table table-striped table-bordered table-light">
+        <thead>
+          <tr>
+            <th scope="col" style="font-size: 18px;">Date</th>
+            <th scope="col" style="font-size: 18px;">Business Unit</th>
+            <th scope="col" style="font-size: 18px;">Outbound</th>
+            <th scope="col" style="font-size: 18px;">Inbound</th>
+            <th scope="col" style="font-size: 18px;">Offerred</th>
+            <th scope="col" style="font-size: 18px;">Abandoned</th>
+            <th scope="col" style="font-size: 18px;">Answered</th>
+            <th scope="col" style="font-size: 18px;">Transferred</th>
+            <th scope="col" style="font-size: 18px;">ApiExecution</th>
+            <th scope="col" style="font-size: 18px;">SMS</th>
+            <th scope="col" style="font-size: 18px;">GlobalException</th>
+            <th scope="col" style="font-size: 18px;">Customer-Disconnect</th>
+            <th scope="col" style="font-size: 18px;">CallflowDisconnect</th>
+           
+            
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let list of listOfData">
+                <td>{{list.dateField}}</td>
+                <td>{{list.businessUnit}}</td>
+                <td>{{list.outbound}}</td>
+                <td>{{list.inbound}}</td>
+                <td>{{list.offerred}}</td>
+                <td>{{list.abandoned}}</td>
+                <td>{{list.answered}}</td>
+                <td>{{list.transferred}}</td>
+                <td>{{list.apiExecution}}</td>
+                <td>{{list.sms}}</td>
+                <td>{{list.globalException}}</td>
+                <td>{{list.customerDisconnect}}</td>
+                <td>{{list.callflowDisconnect}}</td>
+
+            </tr>
+        </tbody>
+    </table>-->
+
+    <table class="table table-striped table-bordered table-light">
+      <thead>
+        <tr>
+        <th>Business-Unit</th>
+        <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+          {{list.businessUnit}}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Outbound</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+            {{list.outbound}}
+          </th>
+        </tr>
+        <tr>
+          <th>Inbound</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+            {{list.inbound}}
+          </th>
+        </tr>
+
+        <tr>
+          <th>Offered</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+            {{list.offerred}}
+          </th>
+        </tr>
+
+        <tr>
+          <th>Answered</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+            {{list.answered}}
+          </th>
+        </tr>
+
+        <tr>
+          <th>Abandoned</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+            {{list.abandoned}}
+          </th>
+        </tr>
+
+        <tr>
+          <th>Transfered</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+            {{list.transferred}}
+          </th>
+        </tr>
+
+        <tr>
+          <th>Data-action Calls</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+    {{list.apiExecution}}
+          </th>
+        </tr>
+
+        <tr>
+          <th>Global Exception</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+            {{list.globalException}}
+          </th>
+        </tr>
+
+        <tr>
+          <th>SMS</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+            {{list.sms}}
+          </th>
+        </tr>
+
+        <tr>
+          <th>CallFlow Disconnect</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+            {{list.callflowDisconnect}}
+          </th>
+        </tr>
+
+        <tr>
+          <th>Customer Disconnect</th>
+          <th scope="col" style="font-size: 18px;" *ngFor="let list of listOfData">
+            {{list.customerDisconnect}}
+          </th>
+        </tr>
+      </tbody>
+</table>
+
+
+</div>
+

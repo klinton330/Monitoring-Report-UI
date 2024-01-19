@@ -1,0 +1,22 @@
+<div class="container-fluid col-4 pt-5 my-5 border h-250"*ngIf="!error">
+    <div class="row p-5">
+        <h2>Fetch By Date </h2>
+        <form class="form-style"(ngSubmit)="getDataByDateTotal()">
+           
+            <div class="mb-3" >
+                <label for="date-input" class="form-label">Select Today or Past Date:</label>
+                <input type="date" class="form-control" name="dateField" id="date-input" [(ngModel)]="dateField">
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary" style="margin-right: 5px;">Submit</button>
+            </div>
+           
+        </form>
+        
+    </div>
+</div>
+
+<div *ngIf="error">
+    <app-error [error]='error'></app-error>
+</div>
