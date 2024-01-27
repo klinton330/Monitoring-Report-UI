@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import { Monitor } from '../../model/monitor';
-import { DatasharingService } from '../../service/datasharing.service';
-import { MonitorService } from '../../service/monitor.service';
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
+import { Monitor } from "../../model/monitor";
+import { MonitorService } from "../../service/monitor.service";
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'app-editdelete',

@@ -16,18 +16,11 @@ export class AddComponent {
   monitor: Monitor = new Monitor();
   isIdPresent: boolean = false;
   listOfData?: Monitor[];
-<<<<<<< HEAD
   error?:string;
   errorFlag:boolean=false
   constructor(private _monitorService: MonitorService, 
     private _router: Router, 
     private _activatedRoute: ActivatedRoute, 
-=======
-  error?: string;
-  constructor(private _monitorService: MonitorService,
-    private _router: Router,
-    private _activatedRoute: ActivatedRoute,
->>>>>>> 9ea34cca22945afa8b3df3e6a62fc20f096af243
     private datasharing: DatasharingService,
     private location: Location, private toastr: ToastrService) { }
   submitData(formData: any): void {
@@ -35,17 +28,10 @@ export class AddComponent {
 
     this._monitorService.saveData(formData.value).subscribe({
       error: (error) => {
-<<<<<<< HEAD
         console.log(error)
         this.errorFlag=true;
         this.error=error.message
         this._router.navigateByUrl('/error')
-=======
-        console.log(error.message)
-        this.error = error.message
-        this.toastr.error(error.message, 'Error')
-        // this._router.navigateByUrl('/error')
->>>>>>> 9ea34cca22945afa8b3df3e6a62fc20f096af243
       },    // errorHandler 
       next: (data) => {
         console.log("from componenet" + data)
