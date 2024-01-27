@@ -140,3 +140,30 @@
         <button (click)="onCancelClick()" class="btn btn-secondary">Cancel</button>
     </form>
 </div>
+
+<div class="modal fade" id="errorModel" *ngIf="errorFlag">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Error</h4>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">{{error}}</div>
+  
+        <!-- Modal footer -->
+
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  
+  

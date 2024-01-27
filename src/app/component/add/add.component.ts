@@ -17,6 +17,7 @@ export class AddComponent {
   isIdPresent: boolean = false;
   listOfData?: Monitor[];
   error?:string;
+  errorFlag:boolean=false
   constructor(private _monitorService: MonitorService, 
     private _router: Router, 
     private _activatedRoute: ActivatedRoute, 
@@ -28,6 +29,8 @@ export class AddComponent {
     this._monitorService.saveData(formData.value).subscribe({
       error: (error) => {
         console.log(error)
+        this.errorFlag=true;
+        this.error=error.message
         this._router.navigateByUrl('/error')
       },    // errorHandler 
       next: (data) => {
