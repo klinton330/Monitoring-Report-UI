@@ -56,11 +56,10 @@
         </table>
         </div>
     </div>
-
+    
     
 </div>
 
-    
     
     <ng-template #changes>
         <div *ngIf="filteredList.length>0 else nodata">
@@ -102,7 +101,7 @@
                         <td>{{list.callflowDisconnect}}</td>
                         <td><button [routerLink]="['editresult',list.id]" class="btn btn-primary"
                                 style="margin-right: 5px;">Edit</button></td>
-                        <td><button class="btn btn-danger" style="margin-right: 5px;">Delete</button></td>
+                        <td><button class="btn btn-danger" style="margin-right: 5px;" (click)="delete(list.id)">Delete</button></td>
 
                     </tr>
                 </tbody>

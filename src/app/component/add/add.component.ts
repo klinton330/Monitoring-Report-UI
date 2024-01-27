@@ -2,10 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { Monitor } from '../../model/monitor';
 import { MonitorService } from '../../service/monitor.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { FetchByDateComponent } from '../fetch-by-date/fetch-by-date.component';
+
 import { DatasharingService } from '../../service/datasharing.service';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add',
@@ -16,35 +16,40 @@ export class AddComponent {
   monitor: Monitor = new Monitor();
   isIdPresent: boolean = false;
   listOfData?: Monitor[];
-  error?:string;
-  constructor(private _monitorService: MonitorService, 
-    private _router: Router, 
-    private _activatedRoute: ActivatedRoute, 
+  error?: string;
+  constructor(private _monitorService: MonitorService,
+    private _router: Router,
+    private _activatedRoute: ActivatedRoute,
     private datasharing: DatasharingService,
-    private location:Location) { }
+    private location: Location, private toastr: ToastrService) { }
   submitData(formData: any): void {
     console.log(formData)
 
     this._monitorService.saveData(formData.value).subscribe({
       error: (error) => {
-        console.log(error)
-        this._router.navigateByUrl('/error')
+        console.log(error.message)
+        this.error = error.message
+        this.toastr.error(error.message, 'Error')
+        // this._router.navigateByUrl('/error')
       },    // errorHandler 
       next: (data) => {
         console.log("from componenet" + data)
         formData.reset()
+        this.toastr.success("Data saved Successfully", 'Success')
         this._router.navigateByUrl("/add")
       },
     })
   }
-  getAllDate(){
-    this._monitorService.getAllData().subscribe((data) => this.listOfData = data,(error)=>this.error=error.status);
+  getAllDate() {
+    this._monitorService.getAllData().subscribe((data) => this.listOfData = data, (error) => this.error = error.status);
   }
   updateMonitorData(monitordata: any) {
     this._monitorService.updateData(monitordata.id, monitordata).subscribe({
       error: (error) => {
-        console.log(error)
-        this._router.navigateByUrl('/error')
+        console.log(error.message)
+        this.error = error.message
+        this.toastr.error(error.message, 'Error')
+        this._router.navigateByUrl("/editdeleteData")
       },    // errorHandler 
       next: (data) => {
         console.log("from componenet" + data)
@@ -52,20 +57,21 @@ export class AddComponent {
           this.listOfData = data
           this.datasharing.setListOfData(this.listOfData)
           console.log(this._router.url);
-          if(this._router.url.includes("/editdeleteData/editresult/")){
+          if (this._router.url.includes("/editdeleteData/editresult/")) {
             this.getAllDate()
-            console.log("inside")
             this._router.navigateByUrl("/editdeleteData")
+            this.toastr.success("Updated Successfully", 'Success')
           }
-          else{
-          this._router.navigateByUrl("/resultbydate")
+          else {
+            this._router.navigateByUrl("/resultbydate")
           }
+
         })
 
       },
     })
   }
-  onCancelClick():void{
+  onCancelClick(): void {
     this.location.back();
   }
   ngOnInit(): void {

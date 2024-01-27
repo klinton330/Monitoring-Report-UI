@@ -1,6 +1,6 @@
-<div class="container pt-5 my-5 border h-500">
+<div class="container pt-5 my-5 border h-500"*ngIf="!error">
     <h2 *ngIf="isIdPresent else showSaveheading">Update</h2>
-    <form #monitordata="ngForm" class="form-style">
+    <form #monitordata="ngForm" class="form-style" >
         <div class="row">
             <div class="col-md-6">
                 <!-- First 10 fields -->
@@ -120,7 +120,7 @@
                         [(ngModel)]="monitor.customerDisconnect" #customdisconnect="ngModel" required>
                     <span class="text-danger"
                         *ngIf="(customdisconnect.touched || monitordata.submitted) && customdisconnect.errors">
-                        Please Enter No of Customet Disconnect Calls
+                        Please Enter No of Customer Disconnect Calls
                     </span>
                 </div>
                 <!-- Repeat the structure for fields 12 to 20 -->
@@ -139,4 +139,9 @@
         </ng-template>
         <button (click)="onCancelClick()" class="btn btn-secondary">Cancel</button>
     </form>
+
+   
 </div>
+<!--<div *ngIf="error">
+    <app-error [error]='error'></app-error>
+</div>-->
