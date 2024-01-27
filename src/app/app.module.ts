@@ -14,6 +14,8 @@ import { ResultComponent } from './component/result/result.component';
 import { ErrorComponent } from './component/error/error.component';
 import { ResultByDateComponent } from './component/result-by-date/result-by-date.component';
 import { EditdeleteComponent } from './component/editdelete/editdelete.component';
+import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import { EditdeleteComponent } from './component/editdelete/editdelete.component
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    ToastNoAnimationModule.forRoot(),
 
   ],
   providers: [],
