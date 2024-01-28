@@ -1,0 +1,181 @@
+<div class="container pt-5 my-5 border h-500">
+    <h2 *ngIf="isIdPresent else showSaveheading">Update</h2>
+    <form #hourlydata="ngForm" class="form-style" >
+        <div class="row">
+            <div class="col-md-6">
+                <!-- First 10 fields -->
+                <div class="mb-3">
+                    <label for="dateField" class="form-label">Select Date:</label>
+                    <input type="date" class="form-control" id="dateField" name="dateField"
+                        [(ngModel)]="hourly.dateField" #dateField="ngModel" required>
+                    <span class="text-danger" *ngIf="(dateField.touched || hourlydata.submitted) && dateField.errors">
+                        Date is required
+                    </span>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="outbound" class="form-label">Outbound:</label>
+                    <input type="text" class="form-control" placeholder="Number of Calls Outbound"
+                        [(ngModel)]="hourly.outbound" name="outbound" #outbound="ngModel" required>
+                    <span class="text-danger" *ngIf="(outbound.touched || hourlydata.submitted) && outbound.errors">
+                        Please Enter the Outbound Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="offerred" class="form-label">Offerred:</label>
+                    <input type="text" class="form-control" placeholder="Number of Calls Offerred" id="offerred"
+                        [(ngModel)]="hourly.offerred" name="offerred" #inbound="ngModel" required>
+                    <span class="text-danger" *ngIf="(inbound.touched || hourlydata.submitted) && inbound.errors">
+                        Please Enter the Inbound Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="answered" class="form-label">Answered:</label>
+                    <input type="text" class="form-control" placeholder="Number of Calls Answered" id="answered"
+                        [(ngModel)]="hourly.answered" name="answered" #answered="ngModel" required>
+                    <span class="text-danger" *ngIf="(answered.touched || hourlydata.submitted) && answered.errors">
+                        Please Enter the Answered Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="answered" class="form-label">Api Execution:</label>
+                    <input type="text" class="form-control" placeholder="Number of API Execution" id="apiExecution"
+                        [(ngModel)]="hourly.apiExecution" name="apiExecution" #apie="ngModel" required>
+                    <span class="text-danger" *ngIf="(apie.touched || hourlydata.submitted) && apie.errors">
+                        Please Enter No of API Execution
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="globalException" class="form-label">Global Exception:</label>
+                    <input type="text" class="form-control" placeholder="Number of Global Exception"
+                        id="globalException" [(ngModel)]="hourly.globalException" name="globalException" #ge="ngModel"
+                        required>
+                    <span class="text-danger" *ngIf="(ge.touched || hourlydata.submitted) && ge.errors">
+                        Please Enter No of Global Exception Occured
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="callflowDisconnect" class="form-label">Callflow Disconnect:</label>
+                    <input type="text" class="form-control" placeholder="Number of Callflow Disconnect"
+                        id="callflowDisconnect" [(ngModel)]="hourly.callflowDisconnect" name="callflowDisconnect"
+                        #callflowDisconnect="ngModel" required>
+                    <span class="text-danger"
+                        *ngIf="(callflowDisconnect.touched || hourlydata.submitted) && callflowDisconnect.errors">
+                        Please Enter No of Callflow Disconnect
+                    </span>
+                </div>
+                <!-- Repeat the structure for fields 2 to 10 -->
+            </div>
+            <div class="col-md-6">
+                <!-- Next 10 fields -->
+                <div class="mb-3">
+                    <label for="time" class="form-label">Time:</label>
+                        <select class="form-select" id="select-dropdown" name="time"
+                        [(ngModel)]="hourly.time" #time="ngModel" required>
+
+                        <option value=undefined selected>Select Time Frame</option>
+                        <option *ngFor="let time of timeFrame" [value]="time">{{time}}</option>
+                    </select>
+                    <span class="text-danger" *ngIf="(bu.touched || hourlydata.submitted) && bu.errors">
+                        Please Select Time
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="businessUnit" class="form-label">Business Unit:</label>
+                    <select class="form-select" id="select-dropdown" name="businessUnit"
+                        [(ngModel)]="hourly.businessUnit" #bu="ngModel" required>
+
+                        <option value=undefined selected>Select Business Unit:</option>
+                        <option value="POJ">POJ</option>
+                        <option value="GIB">GIB</option>
+                        <option value="PGF">PGF</option>
+                    </select>
+                    <span class="text-danger" *ngIf="(bu.touched || hourlydata.submitted) && bu.errors">
+                        Please Select Business Unit
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="inbound" class="form-label">Inbound:</label>
+                    <input type="text" class="form-control" placeholder="Number of Inbound" id="inbound" name="inbound"
+                        [(ngModel)]="hourly.inbound" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="abandoned" class="form-label">Abandoned:</label>
+                    <input type="text" class="form-control" id="abandoned" placeholder="Number of Abandoned"
+                        name="abandoned" [(ngModel)]="hourly.abandoned" #abandon="ngModel" required>
+                    <span class="text-danger" *ngIf="(abandon.touched || hourlydata.submitted) && abandon.errors">
+                        Please Enter No of Abandon Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="transferred" class="form-label">Transferred:</label>
+                    <input type="text" class="form-control" id="transferred" placeholder="Number of Transferred"
+                        name="transferred" [(ngModel)]="hourly.transferred" #transferred="ngModel" required>
+                    <span class="text-danger"
+                        *ngIf="(transferred.touched || hourlydata.submitted) && transferred.errors">
+                        Please Enter No of Transferred Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="sms" class="form-label">SMS:</label>
+                    <input type="text" class="form-control" id="sms" name="sms" placeholder="Number of SMS"
+                        [(ngModel)]="hourly.sms" #sms="ngModel" required>
+                    <span class="text-danger" *ngIf="(sms.touched || hourlydata.submitted) && sms.errors">
+                        Please Enter No of SMS Calls
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="customerDisconnect" class="form-label">Customer Disconnect:</label>
+                    <input type="text" class="form-control" id="customerDisconnect"
+                        placeholder="Number of Customer Disconnect" name="customerDisconnect"
+                        [(ngModel)]="hourly.customerDisconnect" #customdisconnect="ngModel" required>
+                    <span class="text-danger"
+                        *ngIf="(customdisconnect.touched || hourlydata.submitted) && customdisconnect.errors">
+                        Please Enter No of Customer Disconnect Calls
+                    </span>
+                </div>
+                <!-- Repeat the structure for fields 12 to 20 -->
+            </div>
+        </div>
+
+        <button *ngIf="isIdPresent else showSave" class="btn btn-primary m-2" (click)="updatehourlydata(hourly)"
+            [disabled]="hourlydata.invalid">Update</button>
+
+        <ng-template #showSave>
+            <button class="btn btn-primary m-2" (click)="submitData(hourlydata)"
+                [disabled]="hourlydata.invalid">Save Hourly</button>
+        </ng-template>
+        <ng-template #showSaveheading>
+            <h2>Hourly Entry </h2>
+        </ng-template>
+        <button (click)="onCancelClick()" class="btn btn-secondary">Cancel</button>
+    </form>
+</div>
+
+<div class="modal fade" id="errorModel" *ngIf="errorFlag">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Error</h4>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">{{error}}</div>
+  
+        <!-- Modal footer -->
+
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  
+  

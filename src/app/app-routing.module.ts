@@ -8,6 +8,8 @@ import { ResultComponent } from './component/result/result.component';
 import { ErrorComponent } from './component/error/error.component';
 import { ResultByDateComponent } from './component/result-by-date/result-by-date.component';
 import { EditdeleteComponent } from './component/editdelete/editdelete.component';
+import { HourlyComponent } from './component/hourly/hourly.component';
+import { ChartComponent } from './component/chart/chart.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'resultbydate/editresult/:id', component: AddComponent },
   { path: 'editdeleteData/editresult/:id', component: AddComponent },
   { path: 'editdeleteData', component: EditdeleteComponent },
-{path:'**',component:ErrorComponent}];
+  {path:'hourly',component:HourlyComponent},
+  {path:'chart',component:ChartComponent},
+  {path:'**',component:ErrorComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

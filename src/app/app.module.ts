@@ -16,6 +16,8 @@ import { ResultByDateComponent } from './component/result-by-date/result-by-date
 import { EditdeleteComponent } from './component/editdelete/editdelete.component';
 import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HourlyComponent } from './component/hourly/hourly.component';
+import { ChartComponent } from './component/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ResultComponent,
     ErrorComponent,
     ResultByDateComponent,
-    EditdeleteComponent
+    EditdeleteComponent,
+    HourlyComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,

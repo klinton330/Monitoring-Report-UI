@@ -1,0 +1,73 @@
+<div class="container pt-5 my-5 border h-500">
+    <form #chartdata="ngForm" class="form-style" >
+        <div class="row">
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="dateField" class="form-label label">Select Date:</label>
+                    <input type="date" class="form-control" id="dateField" name="dateField"
+                        [(ngModel)]="charts.dateField" #dateField="ngModel" required>
+                    <span class="text-danger" *ngIf="(dateField.touched || chartdata.submitted) && dateField.errors">
+                        Date is required
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="businessUnit" class="form-label label">Business Unit:</label>
+                    <select class="form-select" id="select-dropdown" name="businessUnit"
+                        [(ngModel)]="charts.businessUnit" #bu="ngModel" required>
+
+                        <option value="undefined" selected>Select Business Unit:</option>
+                        <option value="POJ">POJ</option>
+                        <option value="GIB">GIB</option>
+                        <option value="PGF">PGF</option>
+                    </select>
+                    <span class="text-danger" *ngIf="(bu.touched || chartdata.submitted) && bu.errors">
+                        Please Select Business Unit
+                    </span>
+                </div>
+
+                </div>
+
+                <div class="col-md-2">
+                    <div class="mb-3">
+                        <label for="chartType" class="form-label label">Chart Type:</label>
+                        <select class="form-select" id="select-dropdown" name="chartType"
+                            [(ngModel)]="charts.chartType" #chartType="ngModel" required>
+    
+                            <option value="undefined" selected>Select Chart:</option>
+                            <option value="bar">Bar</option>
+                            <option value="line">Line</option>
+                        </select>
+                        <span class="text-danger" *ngIf="(chartType.touched || chartdata.submitted) && chartType.errors">
+                            Please Select Business Unit
+                        </span>
+                    </div>
+    
+                    </div>
+
+                
+                <div class="col-md-2">
+
+                    <label class="label">Metrics</label>
+                    <div *ngFor="let metrics of options">
+                        <label>
+                          <input type="checkbox" [(ngModel)]="metrics.checked" name="options" 
+                          (change)="getSelectedValue(metrics.checked,metrics.label)">{{ metrics.label }}
+                        </label>
+                      </div>
+                </div>
+
+                <div class="col-md-2">
+                <button class="btn btn-primary m-2" (click)="submitData(chartdata)"
+                [disabled]="chartdata.invalid">Get Data</button>
+            </div>
+        </div>
+    </form>
+    <br><br>
+    <div class="chart-container">
+        <canvas  id="MyChart" >{{ charts }}</canvas>
+    </div>
+</div>
+

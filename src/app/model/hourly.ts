@@ -1,9 +1,8 @@
-
-
-export class Monitor {
+export class Hourly {
     id?:number;
     dateField?:string;
     businessUnit?:string;
+    time?:string
     outbound?:number;
     inbound?:number;
     offerred?:number;
