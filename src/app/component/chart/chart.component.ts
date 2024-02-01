@@ -15,14 +15,14 @@ export class ChartComponent {
   charts: Charts = new Charts();
   Chart: Chart | undefined;
 
-  constructor(private chartService: ChartService) {}
+  constructor(private chartService: ChartService) { }
 
   options = [
     { id: 1, label: 'outbound', checked: false, color: 'blue' },
     { id: 2, label: 'inbound', checked: false, color: 'green' },
     { id: 3, label: 'offerred', checked: false, color: 'red' },
     { id: 4, label: 'abandoned', checked: false, color: 'blue' },
-    { id:5, label: 'answered', checked: false, color: 'green' },
+    { id: 5, label: 'answered', checked: false, color: 'green' },
   ];
 
   getSelectedValue(status: boolean, value: string) {
@@ -62,12 +62,12 @@ export class ChartComponent {
       label: item.metricsName,
       data: item.metricsdata,
       borderColor: colors[index],
-      background:colors[index]
+      backgroundColor: colors[index]
     }));
     this.createChart(this.charts.chartType);
   }
 
-  createChart(chartType:any) {
+  createChart(chartType: any) {
     let myChart = Chart.getChart('MyChart');
     if (myChart) myChart.destroy();
     new Chart('MyChart', {
@@ -80,5 +80,18 @@ export class ChartComponent {
         aspectRatio: 2.5,
       },
     });
+  }
+
+  ngOnInit(): void {
+    this.charts.chartType = "line";
+    this.chartService
+      .getDataForChart(
+        "2024-01-29",
+        "PGF",
+        ["outbound", "inbound", "offerred", "abandoned", "answered"]
+      )
+      .subscribe((data: any) => {
+        this.buildGraphData(data);
+      });
   }
 }

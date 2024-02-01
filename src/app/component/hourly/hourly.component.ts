@@ -3,6 +3,7 @@ import { Hourly } from '../../model/hourly';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HourlyService } from '../../service/hourly.service';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-hourly',
@@ -30,11 +31,13 @@ export class HourlyComponent {
     '7:00 PM - 8:00 PM',
     'Others',
   ];
+  
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _hourlyService: HourlyService,
     private toastr: ToastrService,
-    private _router: Router
+    private _router: Router,
+    private location: Location,
   ) {}
   submitData(hourlydata: any) {
     console.log(hourlydata);
@@ -56,7 +59,9 @@ export class HourlyComponent {
 
   updatehourlydata(hourly: Hourly) {}
 
-  onCancelClick() {}
+  onCancelClick(): void {
+    this.location.back();
+  }
 
   ngOnInit(): void {
     let isIdPresent = this._activatedRoute.snapshot.paramMap.has('id');

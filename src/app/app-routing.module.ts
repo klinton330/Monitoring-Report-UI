@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'editdeleteData/editresult/:id', component: AddComponent },
   { path: 'editdeleteData', component: EditdeleteComponent },
   {path:'hourly',component:HourlyComponent},
-  {path:'chart',component:ChartComponent},
+  {path:'hourlystats',component:ChartComponent},
   {path:'**',component:ErrorComponent}];
 
 @NgModule({
